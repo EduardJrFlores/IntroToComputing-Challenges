@@ -3,38 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <title>9Pandas Durd</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* header */
-        header {
-            background-color: #16222D;
-            position: sticky;
-            top: 0;
-            padding: 0 85px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        header h1 {
-            color: white;
-        }
-        header ul {
-            display: flex;
-            gap: 40px;
-        }
-        header li {
-            list-style: none;
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-        header li:hover {
-            color: blue;
-        }
         /* sections */
         section {
             background-color: #291e6e;
@@ -157,6 +130,9 @@
             <li>Tournaments</li>
             <li>Gallery</li>
         </ul>
+        <button id="menuButton" onclick="openMenu()">
+            <i class='bx bx-menu'></i>
+        </button>
     </nav>
 </header>
 
