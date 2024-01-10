@@ -11,6 +11,7 @@ header {
 }
 header h1 {
     color: white;
+    text-align: center;
 }
 header ul {
     display: flex;
@@ -48,6 +49,44 @@ nav button#menuButton{
     font-size: 24px;
     padding: 7px;
 }
+
+header .progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+header .progress-bar {
+    height: 8px;
+    background: #5e3bee;
+    width: 0%;
+}
+
+/* overlay */
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+  }
 
 /*skill*/
 .skills {
@@ -191,6 +230,98 @@ nav button#menuButton{
     background-color: #45a049;
 }
 
+.timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #16222D;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+  
+  .timeline .container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 30%;
+  }
+  
+  .timeline .container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .left {
+    left: 15.7%;
+  }
+  
+  .right {
+    left: 50%;
+  }
+  
+  .left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  .right::after {
+    left: -16px;
+  }
+  
+  .content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
+  
+
+  @media screen and (max-width: 600px) {
+    .timeline{
+    display: none;
+    }
+  }
+    
 /* responsive */
 @media screen and (max-width: 1200px) {
     
@@ -309,6 +440,9 @@ nav button#menuButton{
     footer a{
         display: none;
     }
+    header .progress-container {
+        display: none;
+    }
 
 }
 
@@ -334,6 +468,9 @@ nav button#menuButton{
         width: 80%;
     }
     footer a{
+        display: none;
+    }
+    header .progress-container {
         display: none;
     }
 

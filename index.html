@@ -85,6 +85,27 @@
             line-height: 22px;
             color: black;
         }
+        /* skill-bar */
+        .skill-bar {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+        .skill-bar .container {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        .skill-bar .skills {
+            text-align: right;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+        }
+
+        .one {width: 80%; background-color: #5e3bee;}
+        .two {width: 90%; background-color: #5e3bee;}
+        .three {width: 50%; background-color: #5e3bee;}
+        .four {width: 20%; background-color: #5e3bee;}
         /* footer */
         footer{
             background-color: #16222D;
@@ -117,13 +138,78 @@
             color: red;
         }
 
+        /* chat pop-up */
+        .open-button {
+            background-color: #5e3bee;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        .formContainer {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        .formContainer textarea {
+            width: 100%;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            resize: none;
+            min-height: 200px;
+        }
+
+        .formContainer textarea:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        .formContainer .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+        }
+
+        .formContainer .cancel {
+            background-color: red;
+        }
+
+        .formContainer .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- header-->
 <header>
-    <h1>9Pandas Durd</h1>
+    <h1>9Pandas <br>Durd</h1>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div> 
     <nav>
         <ul>
             <li>Introduction</li>
@@ -133,7 +219,7 @@
         <button id="menuButton" onclick="openMenu()">
             <i class='bx bx-menu'></i>
         </button>
-    </nav>
+    </nav> 
 </header>
 
 
@@ -171,6 +257,42 @@
 <br>
 <br>
 
+<div class="skill-bar">
+    <p>Skill 1</p>
+        <div class="container">
+            <div class="skills one">80%</div>
+        </div>
+
+    <p>Skill 2</p>
+        <div class="container">
+            <div class="skills two">90%</div>
+        </div>
+
+    <p>Skill 3</p>
+        <div class="container">
+            <div class="skills three">50%</div>
+        </div>
+
+    <p>Skill 4</p>
+        <div class="container">
+            <div class="skills four">20%</div>
+        </div>
+</div>
+
+<!-- overlay -->
+
+<div id="overlay" onclick="off()">
+    <div id="text">I love you</div>
+</div>
+  
+<div style="padding:20px">
+    <h2>OVERLAY</h2>
+    <button onclick="on()">Turn on overlay effect</button>
+</div>
+  
+<br>
+<br>
+
     <!-- tournaments -->
 <div id="tournaments">
     <div id="header">
@@ -204,6 +326,31 @@
     </div>
 </div>
 
+<!-- timeliine -->
+<div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>INFO</h2>
+        <h3>YEAR</h3>
+        <p>details</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>INFO</h2>
+        <h3>YEAR</h3>
+        <p>details</p>
+      </div>
+    </div>
+    <div class="container left">
+        <div class="content">
+            <h2>INFO</h2>
+            <h3>YEAR</h3>
+            <p>details</p>
+        </div>
+      </div>
+</div>
+
     <!-- video -->
 <div class="video-container">
     <h2>SAMPLE VIDEO</h2>
@@ -211,6 +358,20 @@
       <source src="video.mp4" type="video/mp4">
     </video>
   </div>
+
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="formContainer">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn" id="linkButton">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
 
     <!-- contact form -->
 <div class="form">
@@ -245,6 +406,48 @@
         <span> Made by Eduard Flores </span>--BSCS Student
     </p>
 </footer>
+<!-- js for scrollbar -->
+<script>
+    window.onscroll = function() {myFunction()};
 
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+<!-- js for overlay -->
+<script>
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+    }
+    
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
+    </script>
+<!-- script for pop up chat window -->
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+</script>
+<script>
+    function buttonClicked() {
+        alert("Your Message has been sent");
+    }
+</script>
+<script>
+    // Add an event listener to the button
+    document.getElementById('linkButton').addEventListener('click', function() {
+      // Navigate to the target HTML file
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>
